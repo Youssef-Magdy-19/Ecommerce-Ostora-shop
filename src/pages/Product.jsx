@@ -41,6 +41,7 @@ const Product =()=>{
         desc.style.display = "block"
     }
     useWindowScrollToTop()
+    useEffect(()=> window.location.reload(),[product])
     return(
         <section className="product pb-5">
             <Banner ProductName={product.productName}/>

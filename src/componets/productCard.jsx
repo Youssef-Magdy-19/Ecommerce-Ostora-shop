@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addcart } from "../Redux/Action";
 import {toast} from "react-toastify"
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const ProductCard =({prod})=>{
     const dispatch = useDispatch()
@@ -14,9 +15,7 @@ const ProductCard =({prod})=>{
         dispatch(addcart(product,1))
         toast.success("Product has been added to cart!");
     }
-    const reloadPage=()=>{
-        window.location.reload()
-    }
+
     // المنتج واستعديه في كل مكان
     return(
         <div className="card">
