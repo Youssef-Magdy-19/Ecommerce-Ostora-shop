@@ -28,11 +28,9 @@ const ProductCard =({prod})=>{
                 <img src={prod.imgUrl} className="w-100 mb-3" height={135} 
                 onClick={()=>{
                     x(`/shop/${prod.id}`)
-                    reloadPage()
                     }}/>
                 <h5 onClick={()=>{
                     x(`/shop/${prod.id}`)
-                    reloadPage()
                     }}>{prod.productName}</h5>
                 <p>
                     <FontAwesomeIcon color="gold" className="me-1" icon={faStar}/>
