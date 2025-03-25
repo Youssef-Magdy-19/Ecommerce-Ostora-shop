@@ -12,7 +12,7 @@ import Store from './Redux/Store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={Store}>
-  <BrowserRouter>
+  <BrowserRouter basename='/Ecommerce-Ostora-shop'>
     <React.StrictMode>
       <App />
     </React.StrictMode>
