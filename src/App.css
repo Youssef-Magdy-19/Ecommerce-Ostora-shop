@@ -316,7 +316,7 @@ button:active{
     position: relative;
 }
 .sele{
-    width: 200px;
+    width: 215px;
     height: 40px;
     border-radius: 5px;
     background-color: #0f3460;
@@ -329,7 +329,6 @@ button:active{
 }
 .sele-btn{
     padding: 0px 15px ;
-    padding-right: 25px;
     margin: 7.5px 0;
     color: #fff;
     border: none;
@@ -338,9 +337,12 @@ button:active{
 .sele-btn:active , .dropdown button:active{
     scale: 1;
 }
+.sele div{
+    height: 100%;
+}
 .sele div span{
     border-right: 1px solid white;
-    height: 40px;
+    height: 27.5px;
 }
 .sele-icon{
     padding-right: 12.5px ;
@@ -468,6 +470,9 @@ button:active{
     }
     .filter .select{
         order: 2;
+    }
+    .sele-icon{
+        padding-left: 15px;
     }
 }
 @media(max-width:576px){

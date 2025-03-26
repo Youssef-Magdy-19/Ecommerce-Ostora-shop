@@ -97,7 +97,7 @@ const Shop =()=>{
                     <div className="select ms-2 col-md-3 col-6">
                         <div className="sele d-flex justify-content-between align-items-center">
                             <button className="sele-btn" onClick={()=>handleSelect()}>{selectCategory}</button>
-                            <div>
+                            <div className="d-flex align-items-center justify-content-between">
                                 <span></span>
                                 <FontAwesomeIcon icon={faArrowDown} className="sele-icon"/>
                             </div>
