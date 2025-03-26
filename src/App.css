@@ -471,6 +471,14 @@ button:active{
     .filter .select{
         order: 2;
     }
+    .sele{
+        position: relative;
+    }
+    .sele div{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
     .sele-icon{
         padding-left: 15px;
     }
