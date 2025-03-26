@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Ecommerce-Ostora-shop/static/css/main.52a18569.css",
-    "main.js": "/Ecommerce-Ostora-shop/static/js/main.7144e3e1.js",
+    "main.css": "/Ecommerce-Ostora-shop/static/css/main.0b3456fe.css",
+    "main.js": "/Ecommerce-Ostora-shop/static/js/main.b72356fa.js",
     "static/css/23.569f4b05.chunk.css": "/Ecommerce-Ostora-shop/static/css/23.569f4b05.chunk.css",
     "static/js/23.c094e353.chunk.js": "/Ecommerce-Ostora-shop/static/js/23.c094e353.chunk.js",
-    "static/js/53.63a1c1cd.chunk.js": "/Ecommerce-Ostora-shop/static/js/53.63a1c1cd.chunk.js",
+    "static/js/53.0122c77f.chunk.js": "/Ecommerce-Ostora-shop/static/js/53.0122c77f.chunk.js",
     "static/js/495.96ab6ebb.chunk.js": "/Ecommerce-Ostora-shop/static/js/495.96ab6ebb.chunk.js",
     "static/js/696.04307cbf.chunk.js": "/Ecommerce-Ostora-shop/static/js/696.04307cbf.chunk.js",
     "static/js/453.67366af4.chunk.js": "/Ecommerce-Ostora-shop/static/js/453.67366af4.chunk.js",
@@ -47,11 +47,11 @@
     "static/media/slick.ttf": "/Ecommerce-Ostora-shop/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Ecommerce-Ostora-shop/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Ecommerce-Ostora-shop/index.html",
-    "main.52a18569.css.map": "/Ecommerce-Ostora-shop/static/css/main.52a18569.css.map",
-    "main.7144e3e1.js.map": "/Ecommerce-Ostora-shop/static/js/main.7144e3e1.js.map",
+    "main.0b3456fe.css.map": "/Ecommerce-Ostora-shop/static/css/main.0b3456fe.css.map",
+    "main.b72356fa.js.map": "/Ecommerce-Ostora-shop/static/js/main.b72356fa.js.map",
     "23.569f4b05.chunk.css.map": "/Ecommerce-Ostora-shop/static/css/23.569f4b05.chunk.css.map",
     "23.c094e353.chunk.js.map": "/Ecommerce-Ostora-shop/static/js/23.c094e353.chunk.js.map",
-    "53.63a1c1cd.chunk.js.map": "/Ecommerce-Ostora-shop/static/js/53.63a1c1cd.chunk.js.map",
+    "53.0122c77f.chunk.js.map": "/Ecommerce-Ostora-shop/static/js/53.0122c77f.chunk.js.map",
     "495.96ab6ebb.chunk.js.map": "/Ecommerce-Ostora-shop/static/js/495.96ab6ebb.chunk.js.map",
     "696.04307cbf.chunk.js.map": "/Ecommerce-Ostora-shop/static/js/696.04307cbf.chunk.js.map",
     "453.67366af4.chunk.js.map": "/Ecommerce-Ostora-shop/static/js/453.67366af4.chunk.js.map",
@@ -60,7 +60,7 @@
     "619.34a8d233.chunk.js.map": "/Ecommerce-Ostora-shop/static/js/619.34a8d233.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.52a18569.css",
-    "static/js/main.7144e3e1.js"
+    "static/css/main.0b3456fe.css",
+    "static/js/main.b72356fa.js"
   ]
 }
