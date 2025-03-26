@@ -1,58 +1,62 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Banner from "../componets/Banner";
 import { products } from "../utils/products";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Container } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "../componets/productCard";
 import Select from 'react-select';
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop"
 
-const options = [
-    { value: "sofa", label: "Sofa" },
-    { value: "chair", label: "Chair" },
-    { value: "watch", label: "Watch" },
-    { value: "mobile", label: "Mobile" },
-    { value: "wireless", label: "Wireless" },
-];
+// const options = [
+//     { value: "sofa", label: "Sofa" },
+//     { value: "chair", label: "Chair" },
+//     { value: "watch", label: "Watch" },
+//     { value: "mobile", label: "Mobile" },
+//     { value: "wireless", label: "Wireless" },
+// ];
 
-const customStyles = {
-    control: (provided) => ({
-        ...provided,
-        backgroundColor: "#0f3460",
-        color: "white",
-        borderRadius: "5px",
-        border: "none",
-        boxShadow: "none",
-        width: "200px",
-        height: "40px",
-    }),
-    option: (provided, state) => ({
-        ...provided,
-        backgroundColor: state.isSelected ? "#0f3460" : "white",
-        color: state.isSelected ? "white" : "#0f3460",
-        "&:hover": {
-        backgroundColor: "#0f3460",
-        color: "white",
-        },
-    }),
-    singleValue: (provided) => ({
-        ...provided,
-        color: "white",
-    }),
-};
+// const customStyles = {
+//     control: (provided) => ({
+//         ...provided,
+//         backgroundColor: "#0f3460",
+//         color: "white",
+//         borderRadius: "5px",
+//         border: "none",
+//         boxShadow: "none",
+//         width: "200px",
+//         height: "40px",
+//     }),
+//     option: (provided, state) => ({
+//         ...provided,
+//         backgroundColor: state.isSelected ? "#0f3460" : "white",
+//         color: state.isSelected ? "white" : "#0f3460",
+//         "&:hover": {
+//         backgroundColor: "#0f3460",
+//         color: "white",
+//         },
+//     }),
+//     singleValue: (provided) => ({
+//         ...provided,
+//         color: "white",
+//     }),
+// };
 
 
 const Shop =()=>{
-    // const sofaCategory = products.filter((pro)=> pro.category === "sofa")
+    
+    const sofaCategory = products.filter((pro)=> pro.category === "sofa")
     const [filter , setFilter] = useState(products)
-
+    const [category , setCategory] = useState("sofa")
+    const [ active , setActive] = useState("")
+    const [selectCategory , setSelectCategory] = useState("Filter By Category")
+    
     const handleFilter=(category)=>{
-        let newFilter = products.filter((pro)=> pro.category === category.value) 
-        // 
+        let newFilter = products.filter((pro)=> pro.category === category) 
         setFilter(newFilter)
     }
-
+    // حته حلوه لازم نستخدم التاثير عشان كل ما قيمه كاتيجوري تتغير علي طول يشغل الفانكشن ديه فمش هتحتاج تدوس مرتين علي الزرار
+    useEffect(()=> handleFilter(category), [category])
     const search =(productName)=>{
         /* هنا استخدم امر انكلودس عشان اقدر اقوله اي منتج اسمه لما تحوله حروف صغيره لو بداخله اي حرف 
         من الحروف المستخدم بيدخلها في البحث متلخصه في البارمتر هتجيبه الامر ده مهم جدا في البحث */
@@ -60,6 +64,25 @@ const Shop =()=>{
         setFilter(searchedProducts)
     }
     useWindowScrollToTop()
+    const handleSelect=()=>{
+        let dropdown = document.querySelector(".dropdown")
+        if(!dropdown.style.display || dropdown.style.display === "none"){
+          return  dropdown.style.display = "block"
+        }else{
+          return  dropdown.style.display = "none"
+        }
+    }
+    // مهم
+    const handleDropdown=()=>{
+        document.addEventListener("click",(event)=>{
+            let dropdown = document.querySelector(".dropdown")
+            let selectBtn = document.querySelector(".sele-btn")
+            if(dropdown && !dropdown.contains(event.target) && event.target !== selectBtn){
+                dropdown.style.display = "none"
+            }
+        })
+    }
+    handleDropdown()
     return(
         <section className="shop pb-5">
             <Banner ProductName="Products"/>
@@ -71,13 +94,56 @@ const Shop =()=>{
                      البارامتر القيمه وخزن الفلتر ده في متغير بعد كده هعمل تعديل لستيت بتاع الفلتر  */}
                     {/* <select className="col-md-3 col-6" onChange={(e)=> handleFilter(e.target.value)}> */}
                         {/* ملحوظه مهمه عشان كل ده يشتغل لازم اكون مستخدم خاصيه الفاليو وحاطط فيها جاتيجوري */}
-                        {/* <option value="" className="hidden" hidden>Filter by Category</option>
-                        <option value="sofa" >Sofa</option>
-                        <option value="chair" >Chair</option>
-                        <option value="watch">Watch</option>
-                        <option value="mobile">Mobile</option>
-                        <option value="wireless">Wireless</option>
-                    </select> */}
+                    <div className="select ms-2 col-md-3 col-6">
+                        <div className="sele d-flex justify-content-between align-items-center">
+                            <button className="sele-btn" onClick={()=>handleSelect()}>{selectCategory}</button>
+                            <div>
+                                <span></span>
+                                <FontAwesomeIcon icon={faArrowDown} className="sele-icon"/>
+                            </div>
+                        </div>
+                        <div className="dropdown">
+                            <button className={active === "sofa" ? "active" : ""} 
+                            onClick={()=>{
+                                setCategory("sofa")
+                                setSelectCategory("Sofa")
+                                setActive("sofa")
+                                console.log(active)
+                                
+                            }} >Sofa</button>
+                            <button className={active === "chair" ? "active" : ""} 
+                            onClick={()=>{
+                                setCategory("chair")
+                                setSelectCategory("Chair")
+                                setActive("chair")
+                            console.log(active)
+                        }
+                            } >Chair</button>
+                            <button className={active === "watch" ? "active" : ""} 
+                            onClick={()=>{
+                                setCategory("watch")
+                                setSelectCategory("Watch")
+                                setActive("watch")
+                                console.log(active)
+                            }}>Watch</button>
+                            <button className={active === "mobile" ? "active" : ""} 
+                            onClick={()=>{
+                                setCategory("mobile")
+                                setSelectCategory("Mobile")
+                                setActive("mobile")
+                            console.log(active)}
+                            }>Mobile</button>
+                            <button className={active === "wireless" ? "active" : ""} 
+                            onClick={()=>{
+                                setCategory("wireless")
+                                setSelectCategory("Wireless")
+                                setActive("wireless")
+                                console.log(active)
+                            }}>
+                                
+                                Wireless</button>
+                        </div>
+                    </div>
 
                     {/*  هنا استخدمنا مكتبه سيلكت وفرت علينا بنكتب داخل خاصيه اوبشن الاوبجكت الهيكون شايل كا الاوبشن كشكل كاي وقيمه 
                     نفس الكلام الاستيلات ونحط القيمه الديفولت ده البيكون ظاهر وواخد خاصيه الاخفاء */}
@@ -85,12 +151,12 @@ const Shop =()=>{
                     انا في حدث التغيير مش محتاج اقوله كل ما القيمه تتغير غير لا هي متعرفه بلت ان في المكتبهط
                     احط الفانكشن علي طول من اغير اقواس البارمتر وهو علي طول تلقائيا هيبعت البارمتر لوحده */}
 
-                    <Select className="select ms-2 col-md-3 col-6"
+                    {/* <Select className="select ms-2 col-md-3 col-6"
                     options={options} 
                     defaultValue={{ value: "", label: "Filter By Category" }}
                     styles={customStyles}
                     onChange={handleFilter}
-                    />
+                    /> */}
                     <div className="search d-flex justify-content-between align-items-center col-md-8 col-11">
                         <input type="text" placeholder="Search by Name" onChange={(e)=> search(e.target.value)}/>
                         <FontAwesomeIcon icon={faSearch}/>

@@ -6,9 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { addcart } from "../Redux/Action";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OtherProduct from "../componets/OtherProduct";
-import useWindowScrollToTop from "../hooks/useWindowScrollToTop"
 
 const Product =()=>{
     const [active , setActive] = useState("Descipition")
@@ -40,7 +39,9 @@ const Product =()=>{
         review.style.display = "none"
         desc.style.display = "block"
     }
-    useWindowScrollToTop()
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[productId])
     
     return(
         <section className="product pb-5">
@@ -52,7 +53,7 @@ const Product =()=>{
                     </div>
                     <div className="product-info col-md-6 col-12">
                         <h5>{product.productName}</h5>
-                        <div className="d-flex justify-content-between col-sm-6 col-7">
+                        <div className="d-flex justify-content-between col-md-6 col-8">
                             <p>
                                 <FontAwesomeIcon color="gold" className="me-1" icon={faStar}/>
                                 <FontAwesomeIcon color="gold" className="me-1" icon={faStar}/>
@@ -62,7 +63,7 @@ const Product =()=>{
                             </p>
                             <span className="ms-3">{product.reviews[0].rating} Rating</span>
                         </div>
-                        <div className="d-flex justify-content-between col-md-5 col-7 mt-1 mb-3 align-items-center">
+                        <div className="d-flex justify-content-between col-md-6 col-8 mt-1 mb-3 align-items-center">
                             <p className="product-price mb-0">${product.price}</p>
                             <span>Category: {product.category}</span>
                         </div>

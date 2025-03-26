@@ -5,8 +5,8 @@ import { useEffect } from "react";
 الكود عشان ما اروح لاي صفحه يجبلي الصفحه من اولها*/
 
 const useWindowScrollToTop =()=>{
-    useEffect(()=> 
-    window.scrollTo(0,0)
-    ,[])
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 }
 export default useWindowScrollToTop

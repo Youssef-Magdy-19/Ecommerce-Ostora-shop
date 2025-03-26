@@ -312,6 +312,64 @@ button:active{
 .search path{
     font-weight: 100 !important;
 }
+.select{
+    position: relative;
+}
+.sele{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #0f3460;
+    color: #fff;
+    cursor: pointer;
+}
+.sele:active{
+    scale: .9;
+    transition: .4s ease-in-out;
+}
+.sele-btn{
+    padding: 0px 15px ;
+    padding-right: 25px;
+    margin: 7.5px 0;
+    color: #fff;
+    border: none;
+    background-color: transparent;
+}
+.sele-btn:active , .dropdown button:active{
+    scale: 1;
+}
+.sele div span{
+    border-right: 1px solid white;
+    height: 40px;
+}
+.sele-icon{
+    padding-right: 12.5px ;
+    padding-left: 10px;
+}
+.dropdown{
+    position: absolute;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 5px #3333;
+    top: 50px;
+    transition: .15s ease-in-out;
+    display: none;
+}
+.dropdown button{
+    display: block;
+    border: none;
+    background-color: white;
+    color: #0f3460;
+    width: 275px;
+    padding: 10px;
+    text-align: start;
+    transition: .15s ease-in-out;
+}
+.dropdown button:hover , .dropdown button.active{
+    background-color: #0f3460;
+    color: white;
+}
 .css-1nmdiq5-menu{
     margin-top: -10px !important;
     width: 300px !important;

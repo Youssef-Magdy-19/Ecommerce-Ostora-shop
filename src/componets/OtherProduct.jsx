@@ -2,7 +2,8 @@ import { products } from "../utils/products"
 import ProductCard from "./productCard"
 
 const OtherProduct =({product})=>{
-    const otherProduct = products.filter((pro)=> product.category === pro.category)
+    let otherProduct = products.filter((pro)=> product.category === pro.category)
+    otherProduct = otherProduct.filter((pro)=> pro !== product)
     return(
         <section className="other-product">
             <div className="container mb-5">
