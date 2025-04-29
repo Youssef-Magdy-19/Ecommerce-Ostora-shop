@@ -3,14 +3,17 @@ import { useDispatch } from "react-redux";
 import { products } from "../utils/products";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faStar } from "@fortawesome/free-solid-svg-icons";
 import { addcart } from "../Redux/Action";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import OtherProduct from "../componets/OtherProduct";
+import ProductReviews from "../componets/AddedReview";
 
 const Product =()=>{
     const [active , setActive] = useState("Descipition")
+    const addedComments = JSON.parse(localStorage.getItem("productComments")) || []
+    
     const handleActive =(name)=>{
         setActive(name)
     }
@@ -42,9 +45,24 @@ const Product =()=>{
     useEffect(()=>{
         window.scrollTo(0,0)
     },[productId])
-    
+        const user = JSON.parse(localStorage.getItem("userInfo"))
+        // const handelUserReview=()=>{
+        //     if(user){
+        //         setCommentsUser([...commentsUser , comment])
+        //     }else{
+        //         setTimeout(()=>navigate("/login"), 2000)
+        //         window.location.href="/Ecommerce-Ostora-shop/login"
+        //     }
+        //     console.log(commentsUser)
+        //     return commentsUser
+        // } 
+        const [comments, setComments] = useState(() => {
+            const stored = localStorage.getItem("productComments");
+            return stored ? JSON.parse(stored) : {};
+        });
+        const commentCount =(addedComments[productId.id] || []).length
     return(
-        <section className="product pb-5">
+        <section className="product pb-5 mt-5">
             <Banner ProductName={product.productName}/>
             <div className="container">
                 <div className="product-details row justify-content-between mt-5 ">
@@ -83,21 +101,22 @@ const Product =()=>{
                         onClick={()=>{
                             showReviwes()
                             handleActive("reviwe")
-                            }}>Reviews({product.reviews.length})</span>
+                            }}>Reviews({product.reviews.length + commentCount})</span>
                     </div>
                     <div className="prod-desc">
                         <p className="mb-1">{product.description}</p>
                     </div>
                     <div className="prod-rev">
-                        <p className="mb-1">Youssef Magdy</p>
+                        <p className="mb-1"><strong>Youssef Magdy</strong></p>
                         <p className="mb-1 text-warning">{product.reviews[0].rating} (rating)</p>
                         <p className="mb-1">{product.reviews[0].text} Rating</p>
                         {product.reviews[1]?
                         <div>
-                            <p className="mb-1 mt-4">Youssef No3man</p>
+                            <p className="mb-1 mt-4"><strong>Youssef No3man</strong></p>
                             <p className="mb-1 text-warning">{product.reviews[1].rating} (rating)</p>
                             <p className="mb-1">{product.reviews[1].text} Rating</p>
                         </div>: null}
+                        <ProductReviews productId={productId.id} comments={comments} setComments={setComments}/>
                     </div>
                 </div>
             </div>

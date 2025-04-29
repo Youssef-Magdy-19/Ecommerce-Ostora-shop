@@ -9,6 +9,9 @@ import { Routes , Route } from 'react-router-dom';
 import { lazy, Suspense } from "react";
 import Loader from './componets/Loader';
 import PageNotFound from './pages/PageNotFound';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Check from './pages/Check';
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -34,6 +37,9 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/shop' element={<Shop/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/checkout' element={<Check/>}/>
         <Route path='/shop/:id' element={<Product/>}/>
         <Route path='*' element={<PageNotFound/>}/>
       </Routes>

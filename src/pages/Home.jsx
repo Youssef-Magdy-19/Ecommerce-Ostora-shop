@@ -15,9 +15,9 @@ const Home =()=>{
         <Fragment>
             <SliderHome/>
             <Wrapper/>
-            <Section title="Big Discount" bgColor="#f6f9fc" productsItems={discoutProducts}/>
-            <Section title="New Arrivals" bgColor="#fff" productsItems={newArrivals}/>
-            <Section title="Best Sales" bgColor="#f6f9fc" productsItems={bestSeales}/>
+            <Section sectionName="discount" title="Big Discount" bgColor="#f6f9fc" productsItems={discoutProducts}/>
+            <Section sectionName="arrivals" title="New Arrivals" bgColor="#fff" productsItems={newArrivals}/>
+            <Section sectionName="best-sales" title="Best Sales" bgColor="#f6f9fc" productsItems={bestSeales}/>
         </Fragment>
     )
 }

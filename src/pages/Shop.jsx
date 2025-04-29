@@ -8,44 +8,7 @@ import ProductCard from "../componets/productCard";
 import Select from 'react-select';
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop"
 
-// const options = [
-//     { value: "sofa", label: "Sofa" },
-//     { value: "chair", label: "Chair" },
-//     { value: "watch", label: "Watch" },
-//     { value: "mobile", label: "Mobile" },
-//     { value: "wireless", label: "Wireless" },
-// ];
-
-// const customStyles = {
-//     control: (provided) => ({
-//         ...provided,
-//         backgroundColor: "#0f3460",
-//         color: "white",
-//         borderRadius: "5px",
-//         border: "none",
-//         boxShadow: "none",
-//         width: "200px",
-//         height: "40px",
-//     }),
-//     option: (provided, state) => ({
-//         ...provided,
-//         backgroundColor: state.isSelected ? "#0f3460" : "white",
-//         color: state.isSelected ? "white" : "#0f3460",
-//         "&:hover": {
-//         backgroundColor: "#0f3460",
-//         color: "white",
-//         },
-//     }),
-//     singleValue: (provided) => ({
-//         ...provided,
-//         color: "white",
-//     }),
-// };
-
-
 const Shop =()=>{
-    
-    const sofaCategory = products.filter((pro)=> pro.category === "sofa")
     const [filter , setFilter] = useState(products)
     const [category , setCategory] = useState("sofa")
     const [ active , setActive] = useState("")
@@ -84,7 +47,7 @@ const Shop =()=>{
     }
     handleDropdown()
     return(
-        <section className="shop pb-5">
+        <section className="shop pb-5 mt-5">
             <Banner ProductName="Products"/>
             <div className="container">
                 <div className="filter row justify-content-between mb-5">
