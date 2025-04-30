@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useWindowScrollToTop from "../hooks/useWindowScrollToTop"
 export default function OrderSuccess() {
+  useWindowScrollToTop()
   return (
     <section id="success">
       <div className="success-container m-auto text-center">
