@@ -12,6 +12,8 @@ import PageNotFound from './pages/PageNotFound';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Check from './pages/Check';
+import Profile from './pages/Profile';
+import OrderSuccess from './pages/OrderSuccess';
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -20,6 +22,8 @@ const Product = lazy(() => import("./pages/Product"));
 
 function App() {
   return (
+    <>
+    <NavBar/>
     <Suspense fallback={<Loader/>}>
       <ToastContainer
         position="top-right"
@@ -32,19 +36,22 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      <NavBar/>
+      
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/shop' element={<Shop/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/profile' element={<Profile/>}/>
         <Route path='/checkout' element={<Check/>}/>
+        <Route path='/order-success' element={<OrderSuccess/>}/>
         <Route path='/shop/:id' element={<Product/>}/>
         <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       <Footer/>
     </Suspense>
+    </>
   );
 }
 

@@ -78,7 +78,10 @@ const Cart =()=>{
                                     <p>Total : </p>
                                     <p>{Math.floor(totalPrice) + 30}$</p>
                                 </div>
-                                <Link to="/checkout" className="btn button-checkout w-100">Go To Checkout</Link> 
+                                {state.length == 0? 
+                                    <Link to="/shop" className="btn button-checkout w-100">Go To Shop</Link> :
+                                    <Link to="/checkout" className="btn button-checkout w-100">Go To Checkout</Link>
+                                }    
                             </div>
                         </div>
                     </div>

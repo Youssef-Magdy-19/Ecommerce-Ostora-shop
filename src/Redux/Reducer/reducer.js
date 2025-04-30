@@ -41,7 +41,8 @@ const Reducer =(state = StateHandle() , action)=>{
             updateCart = state.filter((pro)=>{ return pro.id != eleRem.id})
             localStorage.setItem("cart",JSON.stringify(updateCart))
             return updateCart
-
+        case "clearcart":
+            return []
         default:
             return state
     }

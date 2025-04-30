@@ -176,6 +176,8 @@ header .dark-light i{
     height: 100%;
     width: 250px;
     background-color: #fff;
+    z-index: 10000;
+    will-change: transform;
 }
 body.dark .sideBar{
     background-color: #121212;
@@ -215,7 +217,7 @@ body.dark .sideBar{
     margin-bottom: 3px;
 }
 .side-nav ul li:hover,.side-nav li.active-link{
-    background-color: #91b3dd;
+    background-color:rgb(159, 194, 238);
 }
 .dark .side-nav ul li:hover,.dark .side-nav li.active-link{
     background-color: #333333;
@@ -717,6 +719,15 @@ body.dark .sideBar{
     background-color: transparent;
     color: #000;
 }
+/* checkout */
+.dark select{
+    background-color: #121212;
+    color: #fff;
+    border: 1px solid grey;
+}
+.dark select:focus{
+    box-shadow: none;
+}
 /* loader & page not found*/
 .loader,.page-not-found{
     left: 0;
@@ -756,18 +767,18 @@ body.dark .sideBar{
     background-color: rgba(128, 128, 128, 0.692);
 }
 /* ------------------------------- login & regiseter ----------------------------------- */
-#login , #register , #check{
+#login , #register , #check ,#profile,#success{
     background-color: #f6f9fc;
     padding-top: 100px  ;
-    padding-bottom: 18px;
+    padding-bottom: 60px;
 }
-.dark #login , .dark #register , .dark #check{
+.dark #login , .dark #register , .dark #check ,.dark #profile,.dark #success{
     background-color: #1e1e1e;
 }
 .dark #check{
     color: #fff;
 }
-.login,.register{
+.login,.register,.profile-container,.success-container{
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -775,7 +786,7 @@ body.dark .sideBar{
   padding: 10px;
   border-radius: 5px;
 }
-.dark .login ,.dark .register{
+.dark .login ,.dark .register,.dark .profile-container,.dark .success-container{
     background-color: #121212;
     color: #fff;
 }
@@ -785,7 +796,7 @@ body.dark .sideBar{
     border: 1px solid grey;
 }
 .dark .login input:focus,.dark .login input:hover,.dark .register input:focus,.dark .register input:hover,
-.dark #check input:focus , .dark #check input:hover{
+.dark #check input:focus , .dark #check input:hover ,.dark select:focus{
     border: 1px solid rgb(45 , 212 , 191);
 }
 .login input:focus  ,.login input:hover, .register input:focus,.register input:hover,#check input:focus ,#check input:hover {
@@ -798,23 +809,63 @@ body.dark .sideBar{
 .dark .link-login ,.dark .link-register{
     color: rgb(172, 172, 172);
 }
-.btn-link{
+.btn-link,.cotinue-check{
     background-color: #0f3460;
     color: white;
     text-decoration: none !important;
     margin-bottom: 7px;
 }
-.dark .btn-link{
+.dark .btn-link,.dark .cotinue-check{
     background-color: grey;
 }
-.dark .btn-link:hover{
+.dark .btn-link:hover,.dark .cotinue-check:hover{
     background-color: rgba(128, 128, 128, 0.671);
 }
-.btn-link:hover{
+.btn-link:hover,.cotinue-check:hover{
     color: #fff !important;
     background-color: rgba(15,52,96,.9);
 }
-/* media query (response) */
+.userName{
+    text-transform: capitalize;
+}
+
+/* ------------------------------------- Profile , oreder success --------------------------------------- */
+  .profile-container h2 ,.success-container h2{
+    color: black;
+    margin-bottom: 10px;
+    font-size: 26px;
+  }
+  .dark .profile-container h2 , .dark .success-container h2{
+    color: #fff;
+  }
+  .profile-container p ,.success p{
+    color: var(--text-color);
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+  
+  .logout-btn , .back-btn{
+    background-color: #0f3460;
+    color: #fff;
+    border: none;
+    padding: 7px 24px;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition:  0.3s;
+    width: 100%;
+  }
+  .dark .logout-btn,.dark .back-btn{
+    background-color: grey;
+  }
+  .logout-btn:hover , .back-btn:hover{
+    background-color: #0f3360de;
+  }
+  .dark .logout-btn:hover,.dark .back-btn:hover{
+    background-color: rgba(128, 128, 128, 0.685);
+  }
+/* ----------------------------------- media query (response) ---------------------------*/
 @media(max-width:767px){
     .market-icon{
         display: flex;
@@ -848,9 +899,13 @@ body.dark .sideBar{
     .write-review{
         width: 80%;
     }
+    #check{
+        padding-bottom: 18px;
+    }
     .checkout{
         padding-top: 15px;
     }
+    
 }
 @media(max-width:576px){
     .added-prod{
@@ -872,5 +927,7 @@ body.dark .sideBar{
     .write-review{
         width: 100%;
     }
+    .profile-container,.success-container{
+        width: 80%;
+    }
 }
-/* ------------------------------------ dark mode ---------------------------------- */

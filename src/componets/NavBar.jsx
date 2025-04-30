@@ -2,48 +2,59 @@ import { faBagShopping, faCartShopping, faList, faList12 } from "@fortawesome/fr
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useState , useRef , useEffect} from "react";
-import {Nav , Container , Navbar} from "react-bootstrap"
 import { Link , useLocation} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { motion , AnimatePresence } from "framer-motion";
 import { faSun , faMoon , faClose} from "@fortawesome/free-solid-svg-icons";
 
 const NavBar =()=>{
-    const user = JSON.parse(localStorage.getItem("userInfo"))
+    const location = useLocation()
+    const [user , setUser] = useState(JSON.parse(localStorage.getItem("userInfo")))
     const [sideBar , setSideBar] = useState(false)
+    const [isLoading,setIsLoading] = useState(false)
     const [active , setActive] = useState("Home")
     const [isFixed , setisFixed] = useState(false)
     const sidebarRef = useRef(null);
     const store = useSelector((store)=> store.Reducer)
-    const location = useLocation()
-    const scrollCheck =()=>{
-        if(window.scrollY >= 100){
-            setisFixed(true)
-        }else if(window.scrollY <= 50){
-            setisFixed(false)
+    
+    useEffect(()=>{
+        const scrollCheck =()=>{
+            if(window.scrollY >= 100){
+                setisFixed(true)
+            }else if(window.scrollY <= 50){
+                setisFixed(false)
+            }
         }
-    }
-    window.addEventListener("scroll" , scrollCheck)
+        window.addEventListener("scroll" , scrollCheck)
+        return ()=> window.removeEventListener("scroll",scrollCheck)
+    },[])
+
+    useEffect(()=>{
+        setIsLoading(true)
+    },[location.pathname])
+
+    useEffect(()=>{
+        const timeout = setTimeout(setIsLoading(false),1000)
+        return ()=> {
+            clearTimeout(timeout)
+            setSideBar(false);
+        }
+    },[location.pathname])
+
     useEffect(() => {
         const handleClickOutside = (event) => {
-          if (sidebarRef.current &&!sidebarRef.current.contains(event.target)) {
-            setSideBar(false)
+          if (!isLoading && sidebarRef?.current && !sidebarRef.current.contains(event.target)) {
+            setSideBar(false);
           }
         };
-    
-        if (sideBar) {
-          document.addEventListener("mousedown", handleClickOutside);
-        } else {
-          document.removeEventListener("mousedown", handleClickOutside);
-        }
-    
-        // Cleanup
+      
+        document.addEventListener("mousedown", handleClickOutside);
+      
         return () => {
           document.removeEventListener("mousedown", handleClickOutside);
         };
-      }, [sideBar]);
-      useEffect(()=>{setSideBar(false)},[location])
-    
+      }, [location.pathname, isLoading]);
+
 
       const [theme , setTheme] = useState(localStorage.getItem("currentMode") ?? "light")
       const [currentUserInfo , setCurrentUserInfo] = useState(false)
@@ -58,21 +69,20 @@ const NavBar =()=>{
       },[theme])
      
       useEffect(()=>{
-        let user = JSON.parse(localStorage.getItem("userInfo"))
-        console.log(user)
         if(user){
           setCurrentUserInfo(true)
         }
       },[])
       const updateNavBar =()=>{
-        let user = JSON.parse(localStorage.getItem("userInfo"))
-        console.log(user)
         if(user){
           localStorage.removeItem("userInfo")
           localStorage.removeItem("name")
           setCurrentUserInfo(false)
+          setUser(null)
         }
       }
+      
+   
     return(
         <header>
             <div className="container">
@@ -90,9 +100,11 @@ const NavBar =()=>{
                     <nav className="nav me-auto col-md-9 justify-content-end text-center">
                         <ul className="d-flex justify-content-end ">
                             <li className="ms-5"><Link className="text-decoration-none " to="/">Home</Link></li>
-                            <li className="ms-5"><Link className="text-decoration-none " to="/shop">Shop</Link></li>  
+                            <li className="ms-5"><Link className="text-decoration-none " to="/shop">Shop</Link></li> 
+                            { user ? <li className="ms-5" ><Link className="text-decoration-none w-100" to="/profile">Profile</Link></li> : null} 
                             {currentUserInfo ? <li className="ms-5"><Link to="/login" id="logout" className="text-decoration-none " onClick={()=>{ updateNavBar();
                                 setCurrentUserInfo(localStorage.setItem("currentUser",false));
+                                setCurrentUserInfo(false)
                                 }}> Logout</Link></li>:
                                 <> <li className="ms-5"><Link className="text-decoration-none " to="/login">Login</Link></li>
                                  <li className="ms-5"><Link className="text-decoration-none " to="/register">Register</Link></li></>
@@ -105,15 +117,15 @@ const NavBar =()=>{
                     </div>
                 </div>
             </div>
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 { sideBar &&
-                        <motion.div className="sideBar" ref={sidebarRef} initial={{x:"100%"}} animate={{x:0}} exit={{x:"100%"}} transition={{duration:0.3}}>
+                        <motion.div key="sideBar" className="sideBar" ref={sidebarRef} initial={{x:"100%"}} animate={{x:0}} exit={{x:"100%",transition:{duration:0.4 , ease:"easeInOut"}}} transition={{duration:0.4 , ease: "easeInOut"}}>
                             <div className="icon" onClick={()=> setSideBar(false)}>
                                 <button><FontAwesomeIcon icon={faClose} className="close-icon"/></button>
                             </div>
                             <nav className="side-nav me-auto col-md-9 justify-content-end">
                                 <ul className="d-flex justify-content-end p-0">
-                                    { user ? <h5 className="w-100 text-center">Welcome {user.name}</h5> : null}
+                                    
                                     <li className={active === "Home" ? "active-link ps-3" : "ps-3"} onClick={()=>{
                                         setSideBar(false)
                                         setActive("Home")}}
@@ -126,6 +138,12 @@ const NavBar =()=>{
                                     >
                                         <Link className="icon-link py-3 text-decoration-none w-100"to="/shop">Shop</Link>
                                     </li>
+                                    { user ? <li className={active === "Profile" ? "active-link ps-3" : "ps-3"} onClick={()=>{
+                                        setSideBar(false)
+                                        setActive("Profile")}}
+                                    >
+                                        <Link className="icon-link py-3 text-decoration-none w-100" to="/profile">Profile</Link>
+                                    </li> : null}
                                     {currentUserInfo === true ? <li className={active === "Logout" ? "active-link ps-3" : "ps-3"} onClick={()=>{
                                             setSideBar(false)
                                             setActive("Logout")}}><Link to="/login" id="logout" className="icon-link py-3 text-decoration-none w-100" onClick={()=>{ updateNavBar();

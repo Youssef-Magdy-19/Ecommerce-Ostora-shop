@@ -2,10 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Banner from "../componets/Banner";
 import { products } from "../utils/products";
 import { faArrowDown, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import ProductCard from "../componets/productCard";
-import Select from 'react-select';
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop"
 
 const Shop =()=>{
@@ -107,19 +105,6 @@ const Shop =()=>{
                                 Wireless</button>
                         </div>
                     </div>
-
-                    {/*  هنا استخدمنا مكتبه سيلكت وفرت علينا بنكتب داخل خاصيه اوبشن الاوبجكت الهيكون شايل كا الاوبشن كشكل كاي وقيمه 
-                    نفس الكلام الاستيلات ونحط القيمه الديفولت ده البيكون ظاهر وواخد خاصيه الاخفاء */}
-                    {/* ملحوظه مهمه الاختلاف الوحيد في الكود بتاع اللوجيك بين المكتبه وتاج سيلكت ان 
-                    انا في حدث التغيير مش محتاج اقوله كل ما القيمه تتغير غير لا هي متعرفه بلت ان في المكتبهط
-                    احط الفانكشن علي طول من اغير اقواس البارمتر وهو علي طول تلقائيا هيبعت البارمتر لوحده */}
-
-                    {/* <Select className="select ms-2 col-md-3 col-6"
-                    options={options} 
-                    defaultValue={{ value: "", label: "Filter By Category" }}
-                    styles={customStyles}
-                    onChange={handleFilter}
-                    /> */}
                     <div className="search d-flex justify-content-between align-items-center col-md-8 col-11">
                         <input type="text" placeholder="Search by Name" onChange={(e)=> search(e.target.value)}/>
                         <FontAwesomeIcon icon={faSearch}/>

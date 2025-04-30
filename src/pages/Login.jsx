@@ -83,7 +83,7 @@ const Login =()=>{
                     <button  type="submit" class="btn-link btn" onClick={()=>{check();setCurrentUserInfo(localStorage.setItem("currentUser" , true))}}>Login</button>
                 </div>
             </form>
-            {/* localStorage.setItem("currentUser" , currentUserInfo === false ? true : false) */}
+        
         </section>
         </>
     )

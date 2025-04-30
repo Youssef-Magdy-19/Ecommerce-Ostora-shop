@@ -42,7 +42,7 @@ const Register =()=>{
                 </div>
                 <div class="mb-3 col-md-9 col-10">
                     <label for="exampleInputEmail1" class="form-label">Name</label>
-                    <input type="text" required class="form-control" value={user.name} autoComplete="off" onChange={(e)=> setuser({...user,name:e.target.value})} placeholder="Enter Name" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    <input type="text" className="userName" required class="form-control" value={user.name} autoComplete="off" onChange={(e)=> setuser({...user,name:e.target.value})} placeholder="Enter Name" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                 </div>
                 <div class="mb-3 col-md-9 col-10">
                     <label for="exampleInputEmail3" class="form-label">Email address</label>
