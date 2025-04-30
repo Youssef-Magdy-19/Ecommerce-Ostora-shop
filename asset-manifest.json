@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Ecommerce-Ostora-shop/static/css/main.4847f45c.css",
-    "main.js": "/Ecommerce-Ostora-shop/static/js/main.826d3acb.js",
+    "main.js": "/Ecommerce-Ostora-shop/static/js/main.7f147121.js",
     "static/css/23.569f4b05.chunk.css": "/Ecommerce-Ostora-shop/static/css/23.569f4b05.chunk.css",
     "static/js/23.68c2447e.chunk.js": "/Ecommerce-Ostora-shop/static/js/23.68c2447e.chunk.js",
     "static/js/53.e5abbb70.chunk.js": "/Ecommerce-Ostora-shop/static/js/53.e5abbb70.chunk.js",
@@ -48,7 +48,7 @@
     "static/media/slick.woff": "/Ecommerce-Ostora-shop/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Ecommerce-Ostora-shop/index.html",
     "main.4847f45c.css.map": "/Ecommerce-Ostora-shop/static/css/main.4847f45c.css.map",
-    "main.826d3acb.js.map": "/Ecommerce-Ostora-shop/static/js/main.826d3acb.js.map",
+    "main.7f147121.js.map": "/Ecommerce-Ostora-shop/static/js/main.7f147121.js.map",
     "23.569f4b05.chunk.css.map": "/Ecommerce-Ostora-shop/static/css/23.569f4b05.chunk.css.map",
     "23.68c2447e.chunk.js.map": "/Ecommerce-Ostora-shop/static/js/23.68c2447e.chunk.js.map",
     "53.e5abbb70.chunk.js.map": "/Ecommerce-Ostora-shop/static/js/53.e5abbb70.chunk.js.map",
@@ -61,6 +61,6 @@
   },
   "entrypoints": [
     "static/css/main.4847f45c.css",
-    "static/js/main.826d3acb.js"
+    "static/js/main.7f147121.js"
   ]
 }
