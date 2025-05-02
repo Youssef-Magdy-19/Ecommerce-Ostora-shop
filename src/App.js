@@ -6,7 +6,7 @@ import Footer from './componets/Footer';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import { Routes , Route } from 'react-router-dom';
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import Loader from './componets/Loader';
 import PageNotFound from './pages/PageNotFound';
 import Register from './pages/Register';
@@ -14,10 +14,10 @@ import Login from './pages/Login';
 import Check from './pages/Check';
 import Profile from './pages/Profile';
 import OrderSuccess from './pages/OrderSuccess';
-const Home = lazy(() => import("./pages/Home"));
-const Shop = lazy(() => import("./pages/Shop"));
-const Cart = lazy(() => import("./pages/Cart"));
-const Product = lazy(() => import("./pages/Product"));
+import Home from "./pages/Home"
+import Cart from "./pages/Cart"
+import Shop from "./pages/Shop"
+import Product from "./pages/Product"
 
 
 function App() {

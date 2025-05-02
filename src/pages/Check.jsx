@@ -141,7 +141,7 @@ const Check=()=>{
                                             </div>
                                             <div class="col-sm-3 col-6">
                                                 <label htmlFor="inputCardNum"   className="form-label">CVV</label>
-                                                <input required autoComplete="off" name="cvv" value={formData.cvv} onChange={(e)=>handleChange(e)} type="number" className="form-control" id="inputCardNum" />
+                                                <input required autoComplete="off" name="cvv" min="0" max="999" value={formData.cvv} onChange={(e)=>handleChange(e)} type="number" className="form-control" id="inputCardNum" />
                                             </div>
                                         </div>
                                     </div>
