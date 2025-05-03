@@ -2,8 +2,10 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function ProductReviews({ productId , comments , setComments}) {
+    const navigate = useNavigate()
     const {currentUser} = useAuth()
     const [comment, setComment] = useState("");
     const user = JSON.parse(localStorage.getItem("userInfo"))
@@ -33,8 +35,7 @@ function ProductReviews({ productId , comments , setComments}) {
 
             setComment("");
         } else {
-            setTimeout(() => navigate("/login"), 2000)
-            window.location.href = "/Ecommerce-Ostora-shop/login"
+            setTimeout(() => navigate("/login"), 500)
         }
         const addedComments = localStorage.setItem("commentsProduct" , JSON.stringify(comments))
         return addedComments
