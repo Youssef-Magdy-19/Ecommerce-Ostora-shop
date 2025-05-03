@@ -15,7 +15,7 @@ root.render(
   <Provider store={Store}>
   
     <React.StrictMode>
-    <HashRouter basename='/Ecommerce-Ostora-shop'>
+    <HashRouter>
       <AuthProvider>
         <App />
       </AuthProvider>
