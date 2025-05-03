@@ -5,7 +5,7 @@ import "font-awesome/css/font-awesome.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Store from './Redux/Store';
 import { AuthProvider } from './componets/AuthContext';
@@ -15,11 +15,11 @@ root.render(
   <Provider store={Store}>
   
     <React.StrictMode>
-    <BrowserRouter basename='/Ecommerce-Ostora-shop'>
+    <HashRouter basename='/Ecommerce-Ostora-shop'>
       <AuthProvider>
         <App />
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
     </React.StrictMode>
   
   </Provider>
